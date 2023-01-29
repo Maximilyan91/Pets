@@ -1,12 +1,40 @@
+package Animals;
+
 import java.time.LocalDate;
 import java.util.Arrays;
 
 public class Cat {
+    public static class Breed {
 
-    String name;
-   private int birthYear;
+        private String breed;
+        private String country;
+        private String hairType;
 
+        public Breed(String breed, String country, String hairType) {
+            this.breed = breed;
+            this.country = country;
+            this.hairType = hairType;
+        }
+
+        public String getBreed() {
+            return breed;
+        }
+
+        public String getCountry() {
+            return country;
+        }
+
+        public String getHairType() {
+            return hairType;
+        }
+    }
+
+    private String name;
+    private int birthYear;
     private Cat[] friends;
+    private static int count;
+    private Breed breed;
+
 
     public Cat(String name) {
         this(name, LocalDate.now().getYear());
@@ -22,10 +50,10 @@ public class Cat {
         } else {
             this.birthYear = LocalDate.now().getYear() - Math.abs(age);
         }
- //       friends = new Cat[10];
+        count++;
     }
 
-    void meow() {
+    public void meow() {
         System.out.println();
         System.out.println("Функция мяу");
         System.out.println("Меня зовут " + getName());
@@ -34,7 +62,7 @@ public class Cat {
     }
 
 
-    Cat[] getFriends(){
+    public Cat[] getFriends(){
         if (friends == null) {
             friends = new Cat[0];
         }
@@ -55,10 +83,25 @@ public class Cat {
         return LocalDate.now().getYear() - birthYear;
     }
 
-    void addFriend(Cat friend) {
+    public Breed getBreed() {
+        return breed;
+    }
+
+    public void setBreed(Breed breed) {
+        if (breed == null) {
+            this.breed = breed;
+        }
+
+    }
+
+    public void addFriend(Cat friend) {
         this.friends = Arrays.copyOf(this.friends, getFriends().length + 1);
         this.friends[friends.length - 1] = friend;
 
 
+    }
+
+    public static int getCount() {
+        return count;
     }
 }
