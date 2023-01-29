@@ -29,11 +29,34 @@ public class Cat {
         }
     }
 
+    public class FavToy {
+        private String name;
+        private String type;
+
+        public FavToy(String name, String type) {
+            this.name = name;
+            this.type = type;
+        }
+
+        public String getCatName() {
+            return Cat.this.name;
+        }
+        public String getName() {
+            return name;
+        }
+
+        public String getType() {
+            return type;
+        }
+    }
+
+
     private String name;
     private int birthYear;
     private Cat[] friends;
     private static int count;
     private Breed breed;
+    private FavToy toy;
 
 
     public Cat(String name) {
@@ -59,6 +82,7 @@ public class Cat {
         System.out.println("Меня зовут " + getName());
         System.out.println("Мне " + getage() + " лет");
         System.out.println();
+        System.out.println(getCount());
     }
 
 
@@ -103,5 +127,13 @@ public class Cat {
 
     public static int getCount() {
         return count;
+    }
+
+    public FavToy getToy() {
+        return toy;
+    }
+
+    public void setToy(FavToy toy) {
+        this.toy = toy;
     }
 }

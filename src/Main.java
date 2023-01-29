@@ -9,6 +9,10 @@ public class Main {
 
       //  murzik.name = "Мурзик";
 
+        Cat.FavToy murzikFavToy = murzik.new FavToy("Пищалка", "Мячик");
+        murzik.setToy(murzikFavToy);
+
+       // System.out.println(murzikFavToy.getCatName());
 
         murzik.meow();
 
