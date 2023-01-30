@@ -4,20 +4,29 @@ import java.time.LocalDate;
 import java.util.Arrays;
 
 public class Cat extends Pet {
-    public static class Breed {
+    private static int count;
 
-        private String breed;
+    public static int getCount() {
+        return count;
+    }
+
+    public static class Breed {
+        private String name;
         private String country;
         private String hairType;
 
-        public Breed(String breed, String country, String hairType) {
-            this.breed = breed;
+        public Breed(
+                String name,
+                String country,
+                String heirType
+        ) {
+            this.name = name;
             this.country = country;
-            this.hairType = hairType;
+            this.hairType = heirType;
         }
 
-        public String getBreed() {
-            return breed;
+        public String getName() {
+            return name;
         }
 
         public String getCountry() {
@@ -33,14 +42,14 @@ public class Cat extends Pet {
         private String name;
         private String type;
 
-        public FavToy(String name, String type) {
+        public FavToy(
+                String name,
+                String type
+        ) {
             this.name = name;
             this.type = type;
         }
 
-        public String getCatName() {
-            return Cat.this.getName();
-        }
         public String getName() {
             return name;
         }
@@ -48,68 +57,69 @@ public class Cat extends Pet {
         public String getType() {
             return type;
         }
+
+        public String getCatName() {
+            return Cat.this.getName();
+        }
     }
 
-    private Cat[] friends;
-    private static int count;
-    private Breed breed;
     private FavToy toy;
-
+    private Pet[] friends;
+    private Breed breed;
 
     public Cat(String name) {
         this(name, 0);
+    }
 
+    public Cat(int birthYear) {
+        this("Кот", birthYear);
     }
 
     public Cat(String name, int age) {
         super(name, age);
+
+        friends = new Pet[0];
         count++;
     }
-
-    @Override
-    public void eat() {
-        System.out.println("Насыпать корм");
-        System.out.println("Съесть корм");
-    }
-
-    public void meow() {
-        System.out.println();
-        System.out.println("Функция мяу");
-        System.out.println("Меня зовут " + getName());
-        System.out.println("Мне " + getage() + " лет");
-        System.out.println();
-        System.out.println(getCount());
-    }
-
-
-    public Cat[] getFriends(){
-        if (friends == null) {
-            friends = new Cat[0];
-        }
-        return friends;
-    }
-
 
     public Breed getBreed() {
         return breed;
     }
 
     public void setBreed(Breed breed) {
-        if (breed == null) {
+        if (this.breed == null) {
             this.breed = breed;
         }
-
     }
 
-    public void addFriend(Cat friend) {
-        this.friends = Arrays.copyOf(this.friends, getFriends().length + 1);
-        this.friends[friends.length - 1] = friend;
-
-
+    public void meow() {
+        System.out.println("Мяу!");
+        System.out.println("Меня звут " + getName());
+        System.out.println("Мне " + super.getage() + " лет");
     }
 
-    public static int getCount() {
-        return count;
+
+
+    @Override
+    public void eat() {
+        System.out.println("Насыпают кошачий корм в миску");
+        System.out.println("Ем корм");
+        System.out.println("Пью воду");
+    }
+
+    public Pet[] getFriends() {
+        if (friends == null) {
+            friends = new Pet[0];
+        }
+
+        return friends;
+    }
+
+    public void addFriends(Pet friend) {
+        this.friends = Arrays.copyOf(getFriends(), getFriends().length + 1);
+        this.friends[this.friends.length - 1] = friend;
+
+        System.out.println(getName() + " подружился с " + friend.getName());
     }
 
     public FavToy getToy() {
@@ -119,4 +129,10 @@ public class Cat extends Pet {
     public void setToy(FavToy toy) {
         this.toy = toy;
     }
+
+    @Override
+    public String toString() {
+        return "Cat Name " + getName();
+    }
+
 }
