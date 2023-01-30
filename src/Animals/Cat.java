@@ -3,7 +3,7 @@ package Animals;
 import java.time.LocalDate;
 import java.util.Arrays;
 
-public class Cat {
+public class Cat extends Pet {
     public static class Breed {
 
         private String breed;
@@ -39,7 +39,7 @@ public class Cat {
         }
 
         public String getCatName() {
-            return Cat.this.name;
+            return Cat.this.getName();
         }
         public String getName() {
             return name;
@@ -50,9 +50,6 @@ public class Cat {
         }
     }
 
-
-    private String name;
-    private int birthYear;
     private Cat[] friends;
     private static int count;
     private Breed breed;
@@ -60,20 +57,19 @@ public class Cat {
 
 
     public Cat(String name) {
-        this(name, LocalDate.now().getYear());
-        this.name = name;
-        birthYear = 1;
+        this(name, 0);
+
     }
 
     public Cat(String name, int age) {
-        this.name = name;
-
-        if (age >= 0) {
-            this.birthYear = LocalDate.now().getYear() - age;
-        } else {
-            this.birthYear = LocalDate.now().getYear() - Math.abs(age);
-        }
+        super(name, age);
         count++;
+    }
+
+    @Override
+    public void eat() {
+        System.out.println("Насыпать корм");
+        System.out.println("Съесть корм");
     }
 
     public void meow() {
@@ -93,19 +89,6 @@ public class Cat {
         return friends;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        if (name != null && !name.isEmpty() && !name.isBlank()) {
-            this.name = name;
-        }
-    }
-
-    public int getage() {
-        return LocalDate.now().getYear() - birthYear;
-    }
 
     public Breed getBreed() {
         return breed;
