@@ -1,5 +1,4 @@
 import Animals.*;
-
 import static Animals.Dog.CMD_SIT;
 
 public class Main {
@@ -9,7 +8,6 @@ public class Main {
         Cat murzik = new Cat("Мурзик", 10);
 //        murzik.setBreed(bezPorody);
 //
-//      //  murzik.name = "Мурзик";
 //
 //        Cat.FavToy murzikFavToy = murzik.new FavToy("Пищалка", "Мячик");
 //        murzik.setToy(murzikFavToy);
@@ -24,11 +22,11 @@ public class Main {
 //        sharik.talk();
 //        sharik.eat();
 //
-//        Parrot kesha = new Parrot("Кеша");
+        Parrot kesha = new Parrot("Кеша");
 //        kesha.talk();
 //       murzik.meow();
 ////
-////        Cat begemot = new Cat("Бегемот", -5);
+        Cat begemot = new Cat("Бегемот", -5);
 ////
 ////
 ////        murzik.setName(null);
@@ -50,33 +48,63 @@ public class Main {
 //
 //
 //        Hamster hamster = new Hamster("Хомяк");
-//        Cat begemot = new Cat("Бегемот", 5);
+//      Cat begemot = new Cat("Бегемот", 5);
+//        murzik.getFriends().add(begemot);
+//        murzik.getFriends().add(sharik);
+//        murzik.getFriends().add(kesha);
 //
-//        murzik.addFriends(sharik);
-//        murzik.addFriends(hamster);
-//        murzik.addFriends(begemot);
-//        murzik.addFriends(kesha);
+//        for (Pet friend : murzik.getFriends()) {
+//            if (friend instanceof Cat) {
+//                Cat cat = (Cat) friend;
+//                cat.meow();
+//            } else {
+//                System.out.println(friend);
+//            }
+//        }
+//
+//        murzik.getFriends().remove(sharik);
+//
+//        System.out.println(murzik.getFriends().size());
 //
 ////        System.out.println(sharik.getAllCommands());
 //
 //        sharik.doCommands("Стоять");\
-        Tiger tiger = new Tiger();
+//        Tiger tiger = new Tiger();
+//
+//        sharik.train(CMD_SIT);
+//
+//        Trainer<Dog> alex = new Trainer<>("Alex");
+//        checkTrained(sharik, tiger);
+//
+//
+//        for (int i = 0; i < murzik.getFriends().size(); i++) {
+//            System.out.println(murzik.getFriends().get(i).getName().toUpperCase());
+//        }
 
-        sharik.train(CMD_SIT);
 
-        checkTrained(sharik, tiger);
+        Veterinarian<Cat> ivan = new Veterinarian<>("Иван", "Хирург");
+    ivan.addPatient(murzik);
+    ivan.addPatient(begemot);
+
+    ivan.treat();
+
+
+
     }
 
 
-        public static void checkTrained(Trained... animals){
-            for (Trained animal:animals) {
-                for (String command : animal.getTrainedCommands()) {
-                    animal.doCommands(command);
-                }
-            }
-        
+//        public static void checkTrained (Trained...animals){
+//            for (Trained animal : animals) {
+//                for (String command : animal.getTrainedCommands()) {
+//                    animal.doCommands(command);
+//                }
+//            }
+//
+//
+//        }
 
-    }
+
+
 
 }
 

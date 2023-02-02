@@ -1,6 +1,7 @@
 package Animals;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 public abstract class Pet {
 
@@ -63,4 +64,18 @@ public abstract class Pet {
     public void setPhone(String phone) {
         this.phone = phone;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Pet pet = (Pet) o;
+        return birthYear == pet.birthYear && Objects.equals(name, pet.name) && Objects.equals(address, pet.address) && Objects.equals(phone, pet.phone);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, address, birthYear, phone);
+    }
 }
+

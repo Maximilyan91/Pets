@@ -1,13 +1,34 @@
 package Animals;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Arrays;
 
-public class Cat extends Pet {
+public class Cat extends Pet implements Trained{
     private static int count;
 
     public static int getCount() {
         return count;
+    }
+
+    @Override
+    public String[] getTrainedCommands() {
+        return new String[0];
+    }
+
+    @Override
+    public String[] getAllCommands() {
+        return new String[0];
+    }
+
+    @Override
+    public void train(String command) {
+
+    }
+
+    @Override
+    public void doCommands(String command) {
+
     }
 
     public static class Breed {
@@ -64,7 +85,7 @@ public class Cat extends Pet {
     }
 
     private FavToy toy;
-    private Pet[] friends;
+    private ArrayList<Pet> friends;
     private Breed breed;
 
     public Cat(String name) {
@@ -78,7 +99,7 @@ public class Cat extends Pet {
     public Cat(String name, int age) {
         super(name, age);
 
-        friends = new Pet[0];
+        friends = new ArrayList<>();
         count++;
     }
 
@@ -107,20 +128,11 @@ public class Cat extends Pet {
         System.out.println("Пью воду");
     }
 
-    public Pet[] getFriends() {
-        if (friends == null) {
-            friends = new Pet[0];
-        }
-
+    public ArrayList<Pet> getFriends() {
         return friends;
     }
 
-    public void addFriends(Pet friend) {
-        this.friends = Arrays.copyOf(getFriends(), getFriends().length + 1);
-        this.friends[this.friends.length - 1] = friend;
 
-        System.out.println(getName() + " подружился с " + friend.getName());
-    }
 
     public FavToy getToy() {
         return toy;
